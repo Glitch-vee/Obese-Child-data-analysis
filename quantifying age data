@@ -1,0 +1,39 @@
+import csv
+
+# Raw data
+data = [
+    "14", "10", "15", "14", "5", "9", "4", "1", "12", "9", "12", "7",
+    "6 years 3 month", "4 years", "3", "11", "11", "6", "12", "9", "11",
+    "13", "5 years 6 month", "9", "11.2", "12.5", "12", "11", "10", "9.6",
+    "9", "12", "9 years", "8 years", "5 years", "7 years", "11 years",
+    "3.5 years", "7 years", "5 years", "4 months", "12", "9", "11", "7 months",
+    "8 month", "7 y", "1 y", "10 years", "10 years", "3.5 years", "10 years",
+    "11 years", "10 years", "10", "10", "11", "11", "13", "10", "12", "12",
+    "10", "11", "8 years", "9 years", "8 years", "8 years", "11 running", "12",
+    "14", "10", "13", "11 year", "8", "10", "9 years", "10", "12", "10",
+    "5.5 years", "10", "8 years", "13", "10", "12", "10 years", "10", "16",
+    "9", "08", "10", "12", "11", "10", "6 months", "12", "12", "11", "12",
+    "2 years", "7", "6 months", "11", "10", "8 years", "11", "12", "9", "12",
+    "11", "7 year", "10", "12", "9"
+]
+
+# Function to convert age string to float representing years
+def convert_age_to_years(age_str):
+    parts = age_str.split()
+    if 'years' in parts or 'year' in parts or 'y' in parts:
+        years = float(parts[0])
+        if 'month' in parts or 'months' in parts:
+            months = float(parts[2]) / 12
+            return years + months
+        return years
+    elif 'months' in parts or 'month' in parts:
+        return float(parts[0]) / 12
+    elif 'running' in parts:
+        return float(parts[0])  # Assuming 'running' means full years
+    else:
+        return float(parts[0])
+
+# Processed data
+processed_data = [convert_age_to_years(age) for age in data]
+
+print(processed_data)
