@@ -1,0 +1,114 @@
+def calculate_bmi(weight_kg, height_feet):
+    # Convert height from feet to meters
+    height_m = height_feet * 0.3048
+    # Calculate BMI
+    bmi = weight_kg / (height_m ** 2)
+    return bmi
+
+def interpret_bmi_percentile(bmi, age_years, sex):
+    # Placeholder function to interpret BMI percentiles based on CDC growth charts
+    # This function should use age- and sex-specific growth charts to determine BMI percentiles
+    
+    # Here you would implement the logic to interpret BMI percentiles based on actual growth charts data
+    # For simplicity, this example returns a placeholder interpretation
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25:
+        return "Normal weight"
+    elif bmi < 30:
+        return "Overweight"
+    else:
+        return "Obese"
+
+# Data: Sex, Age (in years), Height (in feet), Weight (in kg)
+kids_data = [
+    ("Male", 14, 5.5, 52),
+    ("Female", 10, 5, 50),
+    ("Female", 15, 5.5, 85),
+    ("Male", 14, 5.5, 60),
+    ("Male", 9, 4.416666667, 42),
+    ("Female", 7, 3.416666667, 33),
+    ("Male", 6.25, 3, 40),
+    ("Female", 4, 3.3, 29),
+    ("Male", 12, 5, 92),
+    ("Female", 9, 5, 50),
+    ("Male", 11, 4.855769231, 45),
+    ("Female", 13, 5, 51),
+    ("Male", 11.2, 4.855769231, 48),
+    ("Male", 12.5, 5.25, 78),
+    ("Male", 12, 5.25, 58),
+    ("Male", 11, 4.7, 55),
+    ("Male", 10, 4.659090909, 49),
+    ("Male", 9.6, 4.395833333, 40),
+    ("Male", 9, 3.333333333, 40),
+    ("Male", 9, 4.58, 51),
+    ("Male", 8, 4.166666667, 42),
+    ("Male", 5, 3.333333333, 20),
+    ("Female", 7, 3.583333333, 28),
+    ("Female", 11, 4.833333333, 60),
+    ("Male", 3.5, 3.583333333, 21),
+    ("Male", 7, 3.916666667, 41),
+    ("Female", 5, 3.583333333, 40),
+    ("Female", 0.333333333, 2.083333333, 8),
+    ("Female", 0.583333333, 2.166666667, 8),
+    ("Female", 0.666666667, 2.5, 11),
+    ("Female", 7, 4, 24),
+    ("Male", 10, 4.166666667, 46),
+    ("Male", 3.5, 3, 15),
+    ("Female", 10, 4.75, 60),
+    ("Female", 11, 4.666666667, 55),
+    ("Male", 10, 5, 75),
+    ("Male", 10, 3.416666667, 42),
+    ("Male", 10, 4.416666667, 50),
+    ("Male", 11, 4.833333333, 52),
+    ("Male", 13, 5.416666667, 85),
+    ("Male", 10, 4.416666667, 45),
+    ("Male", 12, 4.916666667, 60),
+    ("Male", 11, 4.666666667, 45),
+    ("Female", 8, 4.083333333, 60),
+    ("Female", 9, 4.583333333, 42.8),
+    ("Male", 8, 4.166666667, 38.1),
+    ("Female", 11, 4.75, 35),
+    ("Male", 11, 4.75, 42),
+    ("Male", 8, 4.666666667, 49),
+    ("Male", 10, 4.833333333, 35),
+    ("Female", 5.5, 3.583333333, 25),
+    ("Female", 8, 4, 26),
+    ("Male", 13, 3.5, 60),
+    ("Male", 10, 4.333333333, 45),
+    ("Female", 8, 3.416666667, 40),
+    ("Male", 10, 4.416666667, 42),
+    ("Female", 12, 3.583333333, 75),
+    ("Male", 11, 5.25, 49.8),
+    ("Male", 10, 4.833333333, 41),
+    ("Female", 0.5, 4.416666667, 9.4),
+    ("Male", 12, 1.583333333, 51),
+    ("Male", 12, 4.833333333, 54),
+    ("Male", 11, 5, 42),
+    ("Male", 12, 4.916666667, 42),
+    ("Female", 2, 4.916666667, 14),
+    ("Custom", 0.5, 4.166666667, 8.5),
+    ("Male", 11, 2.083333333, 62),
+    ("Male", 10, 5.25, 35),
+    ("Female", 8, 4, 43),
+    ("Male", 11, 4.5, 45),
+    ("Male", 12, 4.666666667, 52),
+    ("Male", 9, 4.166666667, 53),
+    ("Female", 12, 4.291666667, 75),
+    ("Male", 11, 5, 70),
+    ("Male", 7, 4.75, 50),
+    ("Female", 12, 4.5, 49),
+    ("Female", 9, 4.666666667, 37)
+]
+
+# Calculate BMI for each kid, interpret BMI percentiles, and print the result
+for kid in kids_data:
+    sex, age_years, height_feet, weight_kg = kid
+    if height_feet == 0:  # Avoid division by zero
+        continue
+    bmi = calculate_bmi(weight_kg, height_feet)
+    percentile_interpretation = interpret_bmi_percentile(bmi, age_years, sex)
+    print(f"Sex: {sex}, Age: {age_years}, BMI: {bmi:.2f}, Interpretation: {percentile_interpretation}")
+
+# Note: Interpretation of BMI percentiles in children requires reference to CDC or WHO growth charts
+# to determine the BMI percentile.
